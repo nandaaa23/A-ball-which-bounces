@@ -1,0 +1,1 @@
+This project features a CSS-based animation where a ball bounces up and down while interacting with a piece of text. The background of the page changes dynamically when a button is clicked. The animation is designed to be smooth, responsive, and interactive.
