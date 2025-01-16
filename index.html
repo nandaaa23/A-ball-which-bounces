@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Bouncing Ball</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+      background-size: 300% 300%;
+      animation: gradientMove 6s infinite;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      position: relative;
+      height: 80vh;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .bouncing-ball {
+      width: 50px;
+      height: 50px;
+      background-color: #ff6f61;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 0;
+      animation: bounceOnText 3s infinite;
+    }
+
+    @keyframes bounceOnText {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-300px); }
+      100% { transform: translateY(0); }
+    }
+
+    .fading-text {
+      position: absolute;
+      bottom: 10px;
+      font-size: 24px;
+      color: white;
+      animation: fadeInOut 3s infinite;
+    }
+
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+
+    button {
+      position: relative;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff6f61;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #ffcc00;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="bouncing-ball"></div>
+    <div class="fading-text">CSS Animations are Awesome!</div>
+  </div>
+  <button onclick="changeGradient()">Change Background</button>
+
+  <script>
+    function changeGradient() {
+      const colors = [
+        ['#ff9a9e', '#fad0c4'],
+        ['#a18cd1', '#fbc2eb'],
+        ['#ffecd2', '#fcb69f'],
+        ['#89f7fe', '#66a6ff']
+      ];
+      const randomColors = colors[Math.floor(Math.random() * colors.length)];
+      document.body.style.background = `linear-gradient(120deg, ${randomColors[0]}, ${randomColors[1]})`;
+    }
+  </script>
+</body>
+</html>
